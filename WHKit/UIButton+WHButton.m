@@ -36,7 +36,10 @@ NSString const *UIButton_badgeValueKey = @"UIButton_badgeValueKey";
     UIButton *button = [UIButton new];
     [button setTitle:title forState:UIControlStateNormal];
     [button setBackgroundColor:backColor];
-    [button setBackgroundImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
+    if (![backImageName isEqualToString:@""]) {
+        [button setBackgroundImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
+    }
+    
     [button setTitleColor:color forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
     [button sizeToFit];
