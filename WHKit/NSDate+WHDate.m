@@ -552,27 +552,27 @@
 +(NSString *)stringWithTimeInterval:(unsigned int)time Formatter:(NSString *)format {
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:format];
-    NSTimeZone *localtimezone=[NSTimeZone systemTimeZone];
-    NSInteger offset=[localtimezone secondsFromGMT];
-    NSDate *date=[NSDate dateWithTimeIntervalSince1970:(time-offset)];
+//     NSTimeZone *localtimezone=[NSTimeZone systemTimeZone];
+//     NSInteger offset=[localtimezone secondsFromGMT];
+    NSDate *date=[NSDate dateWithTimeIntervalSince1970:time];
     NSString *timeStr=[formatter stringFromDate:date];
     return timeStr;
 }
 
 +(NSTimeInterval )now {
     NSDate *now = [NSDate date];
-    NSTimeZone *zone=[NSTimeZone systemTimeZone];
-    NSInteger offset=[zone secondsFromGMT];
-    return  [now timeIntervalSince1970]+offset;
+//    NSTimeZone *zone=[NSTimeZone systemTimeZone];
+//    NSInteger offset=[zone secondsFromGMT];
+    return  [now timeIntervalSince1970];
 }
 
 +(NSTimeInterval )timeIntervalFromString:(NSString *)timeStr Formatter:(NSString *)format {
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:format];
     NSDate *date=[formatter dateFromString:timeStr];
-    NSTimeZone *zone=[NSTimeZone systemTimeZone];
-    NSInteger offset=[zone secondsFromGMT];
-    return  ([date timeIntervalSince1970]+offset);
+//    NSTimeZone *zone=[NSTimeZone systemTimeZone];
+//    NSInteger offset=[zone secondsFromGMT];
+    return  ([date timeIntervalSince1970]);
 }
 
 @end
